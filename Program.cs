@@ -116,6 +116,7 @@ Console.WriteLine($"Счастливый билет по 1-ому способу
 
 */
 //Задание пятиминутки
+/*
 double x, y;
 x = double.Parse(Console.ReadLine());
 y = double.Parse(Console.ReadLine());
@@ -131,23 +132,117 @@ else
 {
     Console.WriteLine("Точка не попала в область");
 }
+*/
+/*
+long f, f1, f2;
+f = f1 = f2 = 1;
+int k = int.Parse(Console.ReadLine());
+for (int i = 2; i < k; i++)
+{
+    f = f1 + f2;
+    f1 = f2;
+    f2 = f;
+}
+Console.WriteLine(f);
+*/
+/*
+static int F(int k)
+{
+    if (k == 1 || k == 2)
+    {
+        return 1;
+    } 
+    else
+    {
+        return F(k - 1) + F(k - 2);
+    }
+}
+Console.WriteLine(F(20));
+
+*/
+/*
+double x = double.Parse(Console.ReadLine());
+double y,yo;
+
+y = Math.Pow(x, 1 / 3);
+if (x >= 1)
+{
+    y = x / 3; 
+}
+else
+{
+    y = x;
+}
+do
+{
+    yo = y;
+    y = yo - (1 / 3) * (yo - x / (yo * yo));
+} while (Math.Abs(yo - y) > 0.01);
+Console.WriteLine(y);
+*/
+
+//28.09.2023
+/*
+Random r = new Random();
+int n = 10;
+int[] arr = new int[n];
+for (int i = 0; i < n; i++)
+{
+    arr[i] = r.Next(-100,100);
+    Console.WriteLine(arr[i]);
+}
+*/
+/*
+Random r = new Random();
+int[] arr = new int[10];
+int max = int.MinValue;
+int b = int.MinValue;
+//int c = false;
+for (int i = 0; i < arr.Length; i++)
+{
+    arr[i] = r.Next(-100,100);
+    if (arr[i] > max)
+    {
+        max = arr[i];
+ //       c = true;
+ //       if c
+
+    }
+}
+int count = 0;
+for (int i = 0;i < arr.Length;i++)
+{
+    if (arr[i] == max)
+    {
+        count += 1;
+    }
+    if (arr[i] >b && arr[i] != max) { b = arr[i]; }
+}
+Console.WriteLine($"max = {max} count = {count} предпоследнее макс= {b}");
+
+*/
 
 
+using System.Runtime.InteropServices;
 
+Random r = new Random();
+int count = 0;
+int[] arr = new int[10];
+for (int i = 0; i < arr.Length; i++)
+{
+    arr[i] = r.Next(0,2);
+    Console.WriteLine(arr[i]);
+    for (int j = 0; j < arr.Length; j++)
+    {
+        if (arr[j] == arr[i] && j != i) 
+        {
+            count++;
+        }
+    }
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+Console.WriteLine($"count = {count}");
 
 
 
