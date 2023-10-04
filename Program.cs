@@ -223,27 +223,69 @@ Console.WriteLine($"max = {max} count = {count} предпоследнее ма�
 */
 
 
-using System.Runtime.InteropServices;
 
+//#4
+/*
 Random r = new Random();
-int count = 0;
+int rep_c = 0;
+bool exist_repeat = false;
 int[] arr = new int[10];
-for (int i = 0; i < arr.Length; i++)
+for (int i = 0; i < 10; i++)
 {
-    arr[i] = r.Next(0,2);
-    Console.WriteLine(arr[i]);
-    for (int j = 0; j < arr.Length; j++)
+    arr[i] = r.Next(10);
+    for(int j  = 0; j < arr.Length; j++)
     {
-        if (arr[j] == arr[i] && j != i) 
+        if (arr[j] == arr[i])
         {
-            count++;
+            rep_c++;
         }
     }
+    if (rep_c > 1) 
+    { 
+        exist_repeat = true;
+    }
 
+    Console.WriteLine(arr[i]);
+    rep_c = 0;
+}
+if (exist_repeat)
+{
+    Console.WriteLine("Есть повторяющиеся числа");
+}
+*/
+
+//#5
+
+
+Random r = new Random();
+int[] arr = new int[10];
+int count = 0;
+
+for (int i = 0; i < 10; i++)
+{
+    arr[i] = r.Next(10);
+    Console.WriteLine(arr[i]);
 }
 
-Console.WriteLine($"count = {count}");
+for (int i = 0; i < 10; i++)
+{
+    bool fl = false;
+    for (int j = 0; j < i; j++)
+    {
+        if (arr[i] == arr[j])
+        {
+            fl = true;
+            break;
+        }
+    }
+    if (!fl)
+    {
+        count++;
+    }
+}
 
+Console.WriteLine("Количество различных элементов: " + count);
+Console.WriteLine("Количество повторов: " + (10 - count));
 
 
 
