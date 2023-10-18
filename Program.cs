@@ -254,19 +254,21 @@ if (exist_repeat)
 }
 */
 
-//#5
+//#5-6
 
-
+/*
 Random r = new Random();
 int[] arr = new int[10];
-int count = 0;
+int unic_count = 0,rep_count = 0, c = 0;
 
+//Заполняю массив рандомными значениями
 for (int i = 0; i < 10; i++)
 {
     arr[i] = r.Next(10);
     Console.WriteLine(arr[i]);
 }
 
+//Перебираю числа и счетчиком вычисляю кол-во различных и повторов
 for (int i = 0; i < 10; i++)
 {
     bool fl = false;
@@ -274,71 +276,339 @@ for (int i = 0; i < 10; i++)
     {
         if (arr[i] == arr[j])
         {
+            c++;
             fl = true;
             break;
         }
     }
+   
     if (!fl)
     {
-        count++;
+        unic_count++;
+    }
+    if(c > 1) { rep_count++; }
+    c = 0;
+}
+
+Console.WriteLine("Количество различных элементов: " + unic_count);
+Console.WriteLine("Количество повторов: " + rep_count);
+*/
+
+//04.10.2023
+
+// 1
+/*
+int[] arr = {5,4,3,2,1};
+int count = 0;
+for (int i = 2; i < arr.Length; i++)
+{
+    if (arr[i - 1] < arr[i]) { count++; }
+    else if (arr[i - 1] > arr[i]) { count--; }
+}
+if (count == (arr.Length-1))
+{
+    Console.WriteLine("Массив упорядочен по возрастающей");
+}
+else if (count == -(arr.Length-1))
+{
+    Console.WriteLine("Массив упорядочен по убыванию");
+}
+else
+{
+    Console.WriteLine("Массив не упорядочен");
+}
+*/
+
+//2
+/*
+Random r = new Random();
+int[] arr = new int[10];
+int count = 0;
+for (int i = 0; i < arr.Length; i++)
+{
+    arr[i] = r.Next(10);
+    Console.WriteLine(arr[i]);
+}
+
+for (int i = 2;i < arr.Length; i++)
+{
+    if ((arr[i-2] < arr[i-1]) && (arr[i-1] > arr[i])) {  count++; }
+}
+
+Console.WriteLine($"count : {count}");
+*/
+
+// 3 
+/*
+int[] arr = new int[10];
+int a = 0, size = 10;
+Random r = new Random();
+for (int i = 0; i < size; i++)
+{
+    arr[i] = r.Next(10);
+    Console.Write(arr[i]  + " ");
+}
+for (int i = 0; i < size/2; i++)
+{
+    a = arr[i];
+    arr[i] = arr[size - (i+1)];
+    arr[size - (i + 1)] = a;
+}
+Console.WriteLine();
+for (int i = 0; i < size; i++)
+{
+    Console.Write(arr[i] + " ");
+}
+*/
+
+
+// 05.10.2023
+
+// 1
+/*
+Console.WriteLine("--------------------------------------------------");
+int N1 = 10;
+int[,] matr1 = new int[N1, N1];
+Random r = new Random();    
+for (int i = 0; i < N1;i++)
+{
+    for (int j = 0; j < N1;j++)
+    {
+        if (i == j)
+        {
+            matr1[i, j] = 1;
+        }
+        Console.Write($"{matr1[i, j],3} ");
+    }
+    Console.WriteLine();    
+}
+
+
+// 2 
+
+Console.WriteLine("--------------------------------------------------");
+int[,] matr2 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if (j < i)
+        {
+            matr2[i, j] = 0;
+        }
+        else
+        {
+            matr2[i,j] = j-i +1; 
+        }
+        Console.Write($"{matr2[i, j]}  ");
+    }
+    Console.WriteLine();
+}
+
+
+// 3
+Console.WriteLine("--------------------------------------------------");
+
+int[,] matr3 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if (i < j)
+        {
+            matr3[i, j] = 0;
+        }
+        else
+        {
+            matr3[i, j] = j +1;
+        }
+        Console.Write($"{matr3[i, j]}  ");
+    }
+    Console.WriteLine();
+}
+
+
+// 4
+Console.WriteLine("--------------------------------------------------");
+
+int[,] matr4 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        matr4[i, j] = N1 - (i+j);
+        
+        
+        Console.Write($"{matr4[i, j],3}  ");
+    }
+    Console.WriteLine();
+}
+*/
+
+//5
+/*
+int N1 = 10;
+int[,] matr2 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if (i == 0 || j == 0 || i == N1 - 1 || j == N1 - 1)
+        {
+            matr2[i, j] = 1;
+        }
+        else
+        {
+            matr2[i, j] = 0;
+        }
+        Console.Write($"{matr2[i, j]}  ");
+    }
+    Console.WriteLine();
+}
+int summ = 0;
+for (int i = 0;i < N1; i++)
+{
+    for (int j = 0;j < N1; j++)
+    {
+        if (i == 0 || j == 0 || i == N1-1 || j == N1 - 1)
+        {
+            summ += matr2[i, j]; 
+        }
     }
 }
 
-Console.WriteLine("Количество различных элементов: " + count);
-Console.WriteLine("Количество повторов: " + (10 - count));
+Console.WriteLine(summ);
 
 
+// 6
+
+Console.WriteLine("-------------------------------------------------");
+int[,] matr3 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if ((i == j) || (i == N1 - j - 1))
+        {
+            matr3[i, j] = 1;
+        }
+        else
+        {
+            matr3[i, j] = 0;
+        }
+        Console.Write($"{matr3[i, j]}  ");
+    }
+    Console.WriteLine();
+}
+int summ2 = 0;
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if ((i == j) || (i == N1 - j-1))
+        {
+            summ2 += matr3[i, j];
+        }
+    }
+}
+Console.WriteLine(summ2);    
 
 
+// 7
+Console.WriteLine("----------------------------------");
+int[,] matr4 = new int[N1, N1];
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if (((i <= j) && (i <= N1 - j - 1)) || ((i >= j)&&(i >= N1 - j - 1)))
+        {
+            matr4[i, j] = 1;
+        }
+        else
+        {
+            matr4[i, j] = 0;
+        }
+        Console.Write($"{matr4[i, j]}  ");
+    }
+    Console.WriteLine();
+}
+int summ3 = 0;
+for (int i = 0; i < N1; i++)
+{
+    for (int j = 0; j < N1; j++)
+    {
+        if (((i <= j) && (i <= N1 - j - 1)) || ((i >= j) && (i >= N1 - j - 1)))
+        {
+            summ3 += matr4[i, j];
+        }
+    }
+}
+Console.WriteLine(summ3);
+
+*/
 
 
+// 18.10.2023
 
+// Task 1
 
+/*int[] arr = { 1,2,3,3,4,5 };
 
+static bool Mas(int[] arr)
+{
+    int count = 0;
+    int c = 0;
+    for (int i = 2; i < arr.Length; i++)
+    {
+        if (arr[i - 1] < arr[i]) { count++; }
+        else if (arr[i - 1] > arr[i]) { count--; }
+        else { c++; }
+    }
+    if (count + c != (arr.Length - 2) || count + c != -(arr.Length - 2))
+    {
+        return false;
+    }
+    else { return true; }
+}
 
+Console.WriteLine(Mas(arr));
+*/
 
+// 2 
+using System.Security.Cryptography;
 
+double[] a = { 2, 2 };
+double[] b = { 4, 3 };
 
+static double Scal(double[] a, double[] b)
+{
+    double res = 0;
+    for (int i = 0; i < a.Length; i++)
+    {
+        res+= a[i] * b[i];
+    }
+    return res;
+}
+Console.WriteLine(Scal(a,b));
 
+static double MasAbs(double[] a)
+{
+    double res = 0;
+    for (int i = 0;i < a.Length;i++)
+    {
+        res += Math.Pow(a[i], 2); 
+    }
+    return Math.Sqrt(res); 
+}
+static double Cos(double[] a, double[] b)
+{
 
+    double res = Math.Abs(Scal(a,b)) / (MasAbs(a) * MasAbs(b));
+    return res;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Console.WriteLine(Cos(a,b));
 
 
 
