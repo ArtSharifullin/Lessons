@@ -365,14 +365,14 @@ for (int i = 0; i < size; i++)
 // 05.10.2023
 
 // 1
-/*
+
 Console.WriteLine("--------------------------------------------------");
 int N1 = 10;
 int[,] matr1 = new int[N1, N1];
-Random r = new Random();    
-for (int i = 0; i < N1;i++)
+Random r = new Random();
+for (int i = 0; i < N1; i++)
 {
-    for (int j = 0; j < N1;j++)
+    for (int j = 0; j < N1; j++)
     {
         if (i == j)
         {
@@ -380,7 +380,7 @@ for (int i = 0; i < N1;i++)
         }
         Console.Write($"{matr1[i, j],3} ");
     }
-    Console.WriteLine();    
+    Console.WriteLine();
 }
 
 
@@ -398,7 +398,7 @@ for (int i = 0; i < N1; i++)
         }
         else
         {
-            matr2[i,j] = j-i +1; 
+            matr2[i, j] = j - i + 1;
         }
         Console.Write($"{matr2[i, j]}  ");
     }
@@ -420,7 +420,7 @@ for (int i = 0; i < N1; i++)
         }
         else
         {
-            matr3[i, j] = j +1;
+            matr3[i, j] = j + 1;
         }
         Console.Write($"{matr3[i, j]}  ");
     }
@@ -436,19 +436,19 @@ for (int i = 0; i < N1; i++)
 {
     for (int j = 0; j < N1; j++)
     {
-        matr4[i, j] = N1 - (i+j);
-        
-        
+        matr4[i, j] = N1 - (i + j);
+
+
         Console.Write($"{matr4[i, j],3}  ");
     }
     Console.WriteLine();
 }
-*/
+
 
 //5
-/*
-int N1 = 10;
-int[,] matr2 = new int[N1, N1];
+
+
+int[,] matr5 = new int[N1, N1];
 for (int i = 0; i < N1; i++)
 {
     for (int j = 0; j < N1; j++)
@@ -466,13 +466,13 @@ for (int i = 0; i < N1; i++)
     Console.WriteLine();
 }
 int summ = 0;
-for (int i = 0;i < N1; i++)
+for (int i = 0; i < N1; i++)
 {
-    for (int j = 0;j < N1; j++)
+    for (int j = 0; j < N1; j++)
     {
-        if (i == 0 || j == 0 || i == N1-1 || j == N1 - 1)
+        if (i == 0 || j == 0 || i == N1 - 1 || j == N1 - 1)
         {
-            summ += matr2[i, j]; 
+            summ += matr2[i, j];
         }
     }
 }
@@ -483,7 +483,7 @@ Console.WriteLine(summ);
 // 6
 
 Console.WriteLine("-------------------------------------------------");
-int[,] matr3 = new int[N1, N1];
+int[,] matr6 = new int[N1, N1];
 for (int i = 0; i < N1; i++)
 {
     for (int j = 0; j < N1; j++)
@@ -505,23 +505,23 @@ for (int i = 0; i < N1; i++)
 {
     for (int j = 0; j < N1; j++)
     {
-        if ((i == j) || (i == N1 - j-1))
+        if ((i == j) || (i == N1 - j - 1))
         {
             summ2 += matr3[i, j];
         }
     }
 }
-Console.WriteLine(summ2);    
+Console.WriteLine(summ2);
 
 
 // 7
 Console.WriteLine("----------------------------------");
-int[,] matr4 = new int[N1, N1];
+int[,] matr7 = new int[N1, N1];
 for (int i = 0; i < N1; i++)
 {
     for (int j = 0; j < N1; j++)
     {
-        if (((i <= j) && (i <= N1 - j - 1)) || ((i >= j)&&(i >= N1 - j - 1)))
+        if (((i <= j) && (i <= N1 - j - 1)) || ((i >= j) && (i >= N1 - j - 1)))
         {
             matr4[i, j] = 1;
         }
@@ -546,14 +546,14 @@ for (int i = 0; i < N1; i++)
 }
 Console.WriteLine(summ3);
 
-*/
+
 
 
 // 18.10.2023
 
 // Task 1
 
-/*int[] arr = { 1,2,3,3,4,5 };
+/*int[] arr = { 1,2,3,4,5 };
 
 static bool Mas(int[] arr)
 {
@@ -576,6 +576,7 @@ Console.WriteLine(Mas(arr));
 */
 
 // 2 
+/*
 using System.Security.Cryptography;
 
 double[] a = { 2, 2 };
@@ -610,7 +611,7 @@ static double Cos(double[] a, double[] b)
 
 Console.WriteLine(Cos(a,b));
 
-
+*/
 
 
 
