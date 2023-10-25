@@ -365,7 +365,7 @@ for (int i = 0; i < size; i++)
 // 05.10.2023
 
 // 1
-
+/*
 Console.WriteLine("--------------------------------------------------");
 int N1 = 10;
 int[,] matr1 = new int[N1, N1];
@@ -545,7 +545,7 @@ for (int i = 0; i < N1; i++)
     }
 }
 Console.WriteLine(summ3);
-
+*/
 
 
 
@@ -613,8 +613,14 @@ Console.WriteLine(Cos(a,b));
 
 */
 
+//25.10.2023
 
+//List<> - просто массив
 
+//LinkedList<> - ссылки в разных местах памяти, ссылающиеся друг на друга
+
+List<int> lst = new List<int> ();
+Console.WriteLine (lst);
 
 
 
