@@ -42,14 +42,13 @@ Console.WriteLine(IsOrdered(lst));*/
 
 List<int> lst1 = new List<int> { 1, 3, 3, 5, 6 };
 List<int> lst2 = new List<int> { 1, 5, 14, 16 };
-
 static bool IsDistinct(List<int> list) //проверка на уникальность значений списка
 {
-    for (int i = 1; i < list.Count; i++)
+    if (list != null)
     {
-        if (list[i-1] == list[i])
+        for (int i = 1; i < list.Count; i++)
         {
-            return false;
+            if (list[i - 1] > list[i]) { return false; }
         }
     }
     return true;
@@ -59,7 +58,7 @@ static bool IsOrdered(List<int> list) // проверка на упорядоч�
 {
     for (int i = 1; i < list.Count; i++)
     {
-        if (list[i-1] > list[i])
+        if (list[i - 1] > list[i])
         {
             return false;
         }
@@ -82,34 +81,36 @@ static List<int> U(List<int> l1, List<int> l2) // Метод объединен�
 
         if (k == l1.Count && l != l2.Count) { answer.Add(l2[l++]); }
 
-        if (k != l1.Count && l ==  l2.Count) { answer.Add(l1[k++]);}
+        if (k != l1.Count && l == l2.Count) { answer.Add(l1[k++]); }
 
     }
     return answer;
 }
 
-/*static List<int> Intersection(List<int> l1, List<int> l2) //
+static List<int> Intersection(List<int> l1, List<int> l2) //
 {
     int k = 0, l = 0;
     List<int> answer = new List<int>();
 
-    while ((k + l) < (l1.Count + l2.Count))
+    while (k  < l1.Count && l < l2.Count)
     {
-        if (k != l1.Count && l != l2.Count && IsDistinct(answer))
+        if (l1[k] < l2[l])
         {
-            if (l1[k] < l2[l]) { answer.Add(l1[k]); k++; }
-            else if (l1[k] > l2[l]) { answer.Add(l2[l]); l++; }
+            k++;
         }
 
-        if ((k == l1.Count && l != l2.Count) && l2[l] > answer[answer.Count - 1]) { answer.Add(l2[l++]); }
+        else if (l1[k] > l2[l])
+        {
+            l++;
+        }   
 
-        if ((k != l1.Count && l == l2.Count) && l1[k] > answer[answer.Count - 1]) { answer.Add(l1[k++]); }
-
+        else { answer.Add(l1[k]); k++; l++; }
     }
-    return answer;
-}*/
 
-static List<int> Substarction(List<int> l1,List<int> l2) // Метод Вычитания
+    return answer;
+}
+
+static List<int> Substarction(List<int> l1, List<int> l2) // Метод Вычитания
 {
     List<int> answer = new List<int>();
     for (int i = 0; i < l1.Count; i++)  // Заполняем новый список значениями первого
@@ -122,7 +123,7 @@ static List<int> Substarction(List<int> l1,List<int> l2) // Метод Вычи�
 
         if (flag) { answer.Add(l1[i]); }
     }
-    
+
     return answer;
 }
 
@@ -132,12 +133,12 @@ static List<int> Substarction(List<int> l1,List<int> l2) // Метод Вычи�
 
 // Вызываем метод объединения:
 Console.WriteLine("-------------------------------\nОбъединение:");
-foreach (var i in U(lst1,lst2)) { Console.WriteLine(i); }
+foreach (var i in U(lst1, lst2)) { Console.WriteLine(i); }
 
-/*// Вызываем метод пересечения
+// Вызываем метод пересечения
 Console.WriteLine("-------------------------------\nПересечение:");
 foreach (var i in Intersection(lst1, lst2)) { Console.WriteLine(i); }
-*/
+
 
 // Вызывыем метод вычитания
 Console.WriteLine("-------------------------------\nA/B:");
@@ -152,12 +153,55 @@ Console.WriteLine($"----------------------\n" +
 
 
 
+//26.10.2023
+/*
+string path = "C:\\Users\\Moibaty\\source\\repos\\Task_1\\Lessons\\content.txt"; // Путь к файлу
+Dictionary<char, int> freq = new Dictionary<char, int>();
 
+foreach (var str in File.ReadAllLines(path))
+{
+    var words = str.ToLower().Split(" ");
+    foreach (var word in words)
+    {
+        if (word.Length > 0)
+        {
+            var ch = word[0];
+            if (Char.IsLetter(ch))
+            {
+                if (freq.Keys.Contains(ch)) { freq[ch]++; }
+                else { freq[ch] = 1; }
+            }
+        }
+    }
+}
+foreach (var i in freq.Keys.Order())
+{
+    Console.WriteLine($"{i} - {freq[i]}");
+}*/
 
+/*
+string path = "C:\\Users\\Moibaty\\source\\repos\\Task_1\\Lessons\\content.txt"; // Путь к файлу
+Dictionary<string, int> freq = new Dictionary<string, int>();
 
-
-
-
+foreach (var str in File.ReadAllLines(path))
+{
+    var words = str.ToLower().Split(new char[] { ' ', '.', ',', ':', '-' });
+    foreach (var word in words)
+    {
+        if (word.Length > 0)
+        {
+            var w = word;
+            if (freq.Keys.Contains(w)) { freq[w]++; }
+            else { freq[w] = 1; }
+            
+        }
+    }
+}
+foreach (var i in freq.Keys.Order())
+{
+    Console.WriteLine($"{i} - {freq[i]}");
+}
+*/
 
 
 
