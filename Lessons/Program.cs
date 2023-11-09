@@ -39,7 +39,7 @@ bool IsOrdered(List<int> lst)
 Console.WriteLine(IsOrdered(lst));*/
 
 //------------------------------------------------------------------------
-
+/*
 List<int> lst1 = new List<int> { 1, 3, 3, 5, 6 };
 List<int> lst2 = new List<int> { 1, 5, 14, 16 };
 static bool IsDistinct(List<int> list) //проверка на уникальность значений списка
@@ -150,7 +150,7 @@ foreach (var i in Substarction(lst2, lst1)) { Console.WriteLine(i); }
 
 Console.WriteLine($"----------------------\n" +
     $"IsOrdered(lst1) : {IsOrdered(lst1)}\nIsDistinct(lst2) : {IsDistinct(lst2)}\n");
-
+*/
 
 
 //26.10.2023
@@ -207,78 +207,228 @@ foreach (var i in freq.Keys.Order())
 
 
 
+/*
+
+string path = "C:\\Users\\Moibaty\\source\\repos\\Task_1\\Lessons\\content.txt"; 
+static string DecodeMessage(string[] lines)
+{
+    List<string> answer = new List<string>();
+
+    for (int i = lines.Length - 1; i >= 0; i--)
+    {
+        string[] words = lines[i].Split(' ');
 
+        for (int k = words.Length - 1; k >= 0; k--)
+        {
+            if (words[k].Length != 0 && char.IsUpper(words[k][0])) { answer.Add(words[k]); }
+        }
+    }
+    return string.Join(" ", answer);
+}
+Console.WriteLine(DecodeMessage(File.ReadAllLines(path)));
 
+*/
 
+/*
+Console.WriteLine(GetBenfordStatistics("1"));
+Console.WriteLine(GetBenfordStatistics("abc"));
+Console.WriteLine(GetBenfordStatistics("123 456 789"));
+Console.WriteLine(GetBenfordStatistics("abc 123 def 456 gf 789 i"));
 
+static int[] GetBenfordStatistics(string text)
+{
+    int[] statistics = new int[10];
+    string[] input = text.Split(" ");
+    for (int i = 0; i < input.Length; i++)
+    {
+        if (char.IsDigit(input[i][0]))
+        {
+            int index = (int)input[i][0] - '0';
+            statistics[index] += 1;
+        }
+    }
+    return statistics;
+}
 
+*/
 
 
+/*
+Random r = new Random();
+Console.Write("Введите число a: ");
+int a = int.Parse(Console.ReadLine());
+Console.Write("Введите число b: ");
+int b = int.Parse(Console.ReadLine());
+Console.Write("Введите кол-во отрезков (кол-во пар словаря): ");
+int n = int.Parse(Console.ReadLine());
+var dict = new Dictionary<int, int>();
 
+for (int i = 0; i < n; i++)
+{
+    dict[i] = 0;
+}
 
+for (int k = 0; k < 10000; k++)
+{
+    int x = r.Next(a, b);
 
+    for (int i = 0; i < n; i++)
+    {
+        if (x < (i + 1) * ((b - a) / n) && x >= (i) * ((b - a) / n)) { dict[i]++; }
+    }
+}
+
+foreach (var i in dict) { Console.WriteLine(i.Key + "\t" + i.Value); }*/
 
+
+
+/*long Fibb(int k )
+{
+    if ( k < 3 ) { return 1; }
+    return Fibb(k-2) + Fibb(k-1);
+}
 
+void PrintMas(int[] arr, int k)
+{
+    if (k >= arr.Length) { return; }
+    Console.WriteLine(arr[k]);
+    PrintMas(arr, k+1);
+}
+
+int[] a = new int[] {1,2,3,4,5,6,7};
+
+PrintMas(a, 0);
+Console.WriteLine(Fibb(4));*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+
+
+
+/*
+static bool IsArrSym(int[] arr, int a, int b)
+{
+    if (a >= b) { return true; }
+
+    if (arr[a] != arr[b]) { return false; }
+
+    return IsArrSym(arr, a + 1, b - 1);
+}
+
+int[] arr = { 1, 2, 3, 2, 1 };
+
+
+if (IsArrSym(arr, 0, arr.Length - 1))
+    Console.WriteLine($"Массив симметричен\n");
+else
+    Console.WriteLine("Массив несимметричен\n");
+
+
+static bool IsPalindrom(string str)
+{
+    str = str.Replace(" ", "").ToUpper();
+
+    return Check(str, 0, str.Length - 1);
+}
+
+static bool Check(string str, int a, int b)
+{
+    if (a >= b) { return true; }
+
+    if (str[a] != str[b]) { return false; }
+
+    return Check(str, a + 1, b - 1);
+}
+
+
+string str = "Казак";
+
+if (IsPalindrom(str))
+    Console.WriteLine($"Строка является палиндромом\n");
+else
+    Console.WriteLine($"Строка не является палиндромом\n");
+*/
+
+
+//08.11.2023 
+/*int[,] GenerateMatr(int size)
+{
+    Random r = new Random();
+    int[,] matr = new int[size, size];
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            matr[i, j] = r.Next(3);
+    return matr;
+}
+
+void ShowMatrix(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLength(0); i++)
+    {
+        for (int j = 0; j < matr.GetLength(1); j++)
+            Console.Write($"{matr[i, j],3} ");
+        Console.WriteLine();
+    }
+}
+
+int[,] MultMatrix(int[,] m1, int[,] m2)
+{
+    if (m1.GetLength(1) != m2.GetLength(0))
+        throw new ArgumentException("Размеры матриц не подходят!");
+
+    var rows = m1.GetLength(0);
+    var cols = m2.GetLength(1);
+    var l = m1.GetLength(1);
+    var res = new int[rows, cols];
+
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < cols; j++)
+            for (int k = 0; k < l; k++)
+                res[i, j] += m1[i, k] * m2[k, j];
+
+    return res;
+}
+
+int N = 2;
+var a = GenerateMatr(N);
+var b = GenerateMatr(N);
+
+ShowMatrix(a);
+Console.WriteLine("**********************************");
+ShowMatrix(b);
+Console.WriteLine("**********************************");
+ShowMatrix(MultMatrix(a, b));
+
+*/
+
+/*int[] arr = { 661, 662, 663, 664, 665, 666,667,668 };
+int F(int[] arr, int x)
+{
+    int start = 0, end = arr.Length - 1;
+    int i;
+    while (start <= end)
+    {
+        i = (start + end) / 2;
+        if (arr[i] < x) { start = i + 1; }
+        else if (arr[i] > x) { end = i - 1; }
+        else return i;
+    }
+    return -1;
+}
+
+Console.WriteLine($"Инндекс искомого элемента = {F(arr,666)}");*/
+
+List<int> list = new List<int> {};
+
+void InsertX(List<int> list, int x)
+{
+    for (int i = 0; i < list.Count; i++)
+    {
+        if ((list[i] > x)) { list.Insert(i,x); return; }
+    }
+    if (list.Count == 0 || list[list.Count-1] < x) { list.Add(x); }
+}
+Random r = new Random();
+for (int i = 0; i < 20; i++) { InsertX(list, r.Next(100)); }
+foreach (int x in list) { Console.Write($" {x} "); }
 
 
 
