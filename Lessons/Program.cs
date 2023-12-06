@@ -416,7 +416,7 @@ int F(int[] arr, int x)
 
 Console.WriteLine($"Инндекс искомого элемента = {F(arr,666)}");*/
 
-List<int> list = new List<int> {};
+/*List<int> list = new List<int> {};
 
 void InsertX(List<int> list, int x)
 {
@@ -428,45 +428,173 @@ void InsertX(List<int> list, int x)
 }
 Random r = new Random();
 for (int i = 0; i < 20; i++) { InsertX(list, r.Next(100)); }
-foreach (int x in list) { Console.Write($" {x} "); }
+foreach (int x in list) { Console.Write($" {x} "); }*/
+
+// 15.11.2023 
+/*
+Random r = new Random();
+void BubbleSort(int[] arr)
+{
+    var size = arr.Length;
+    for (int i = size - 1 ; i > 0; i--)
+    { 
+        var max = -10000000;
+        var l = 0;
+        for (int j = 0; j < i; j++)
+        {
+            if(arr[j] > max)
+            {
+               
+                {
+                    max = arr[j];
+                    l = j;
+                }
+                
+            }
+
+        }
+
+        if (arr[i] <= max)
+        {
+            arr[l] = arr[i];
+            arr[i] = max;
+
+        }
+    }
+}
+
+int[] GenerateArr(int size)
+{
+    int[] arr = new int[size];
+    for (int i = 0; i < size; i++) { arr[i] = r.Next(0, 1000); }
+    return arr;
+}
+
+void PrintArr(int[] arr)
+{
+    for (int i = 0; i < arr.Length; i++) { Console.Write($" {arr[i]} "); }
+    Console.WriteLine();
+
+}
 
 
+var a = GenerateArr(35);
+PrintArr(a);
+BubbleSort(a);
+PrintArr(a);*/
 
 
+//Сортировка массива по заданному диапазону
+/*void BubbleSortRange(int[] array, int left, int right)
+{
+    for (int i = left; i < right + 1; i++)
+        for (int j = left; j < right; j++)
+            if (array[j] > array[j + 1])
+            {
+                var t = array[j + 1];
+                array[j + 1] = array[j];
+                array[j] = t;
+            }
+}
+
+var a = new int[] {6,5,4,3,2,1};
+BubbleSortRange(a, 0,2);
+
+foreach (int i in a) { Console.WriteLine(i); }
+*/
+
+/*
+string t = "a.b!c? d:e; f(g)h; i";
+
+    string ClearString(string s)
+    {
+        var result = "";
+        foreach (var simbol in s)
+        {
+            if (char.IsLetter(simbol) || (simbol == '\''))
+                result += simbol;
+            else result += ' ';
+        }
+        return result;
+    }
+    List<List<string>> ParseSentences(string text)
+    {
+        var sentencesList = new List<List<string>>();
+        text = text.ToLower();
+        char[] del_sent_chars = { '.', '!', '?', ':', ';', '(', ')' };
+        string[] sentences = text.Split(del_sent_chars);
+        foreach (string sentence in sentences)
+        {
+            var words = new List<string>();
+            var clear_sentence = ClearString(sentence);
+            string[] words2 = clear_sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            foreach (string word in words2)
+            {
+                words.Add(word);
+            }
+            if (words.Count == 0) continue;
+            else sentencesList.Add(words);
+        }
+        return sentencesList;
+    }
+
+foreach (var sentence in ParseSentences(t))
+{
+    foreach (var j in sentence) { Console.WriteLine(j); }
+}
+*/
 
 
+//22.11.2023
+Random r = new Random();
+int[] GenerateArr(int size)
+{
+    var arr = new int[size];
+    for (int i = 0; i < size; i++) { arr[i] = r.Next(100); }
+    
+    return arr;
+}
+
+static void QuickSort(int[] arr, int left, int right)
+{
+    if (left < right)
+    {
+        int pivotIndex = Partition(arr, left, right);
+
+        QuickSort(arr, left, pivotIndex - 1);
+        QuickSort(arr, pivotIndex + 1, right);
+    }
+}
+
+static int Partition(int[] arr, int left, int right)
+{
+    int pivot = arr[right];
+    int i = left - 1;
+
+    for (int j = left; j < right; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+            Swap(arr, i, j);
+        }
+    }
+    Swap(arr, i + 1, right);
+
+    return i + 1;
+}
+
+static void Swap(int[] arr, int i, int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var a = GenerateArr(100);
+QuickSort(a,0,a.Length - 1);
+foreach (int i in a) { Console.WriteLine(i); }
 
 
 
