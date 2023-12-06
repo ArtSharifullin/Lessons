@@ -87,17 +87,16 @@ namespace MatrixClass
         {
             rows = a.Rows; columns = a.Columns;
             matr = new int[rows, columns];
-            for (int i = 0;i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = columns- 1;j > 0; j--)
+                for (int j = 0; j < columns; j++)
                 {
-                    matr[i,j] = a[i,j - 1];
+                    if (j - i - 1 < 0) { matr[i, j] = a[i, (j - i - 1) + columns]; }
+                    else { matr[i, j] = a[i, j - i - 1 ]; }
+                    
                 }
             }
-            for (int x = 0; x < rows; x++)
-            {
-                matr[x, 0] = a[x, columns - 1];
-            }
+            
         }
     }
 }
